@@ -127,7 +127,7 @@ class BaseModel:
 
             feed_dic = {self.input_gray: img_gray[None, :, :, None]}
             #feed_dic = {self.input_gray: img_gray[None, :, :, :1]}
-            print("feed_dic",feed_dic.shape)
+            print("feed_dic",feed_dic)
             outputs = self.sess.run(self.sampler, feed_dict=feed_dic)
             print("outputs line")
             outputs = postprocess(tf.convert_to_tensor(outputs), colorspace_in=self.options.color_space, colorspace_out=COLORSPACE_RGB).eval() * 255
