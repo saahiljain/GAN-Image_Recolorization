@@ -125,9 +125,11 @@ class BaseModel:
             path = os.path.join(outputs_path, name)
 
             feed_dic = {self.input_gray: img_gray[None, :, :, None]}
+            print(feed_dic)
             outputs = self.sess.run(self.sampler, feed_dict=feed_dic)
             outputs = postprocess(tf.convert_to_tensor(outputs), colorspace_in=self.options.color_space, colorspace_out=COLORSPACE_RGB).eval() * 255
             print(path)
+            imshow(np.array(img), self.name)
             imsave(outputs[0], path)
 
     def sample(self, show=True):
