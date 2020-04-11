@@ -125,7 +125,8 @@ class BaseModel:
             name = os.path.basename(img_gray_path)
             path = os.path.join(outputs_path, name)
 
-            feed_dic = {self.input_gray: img_gray[None, :, :, None]}
+            #feed_dic = {self.input_gray: img_gray[None, :, :, None]}
+            feed_dic = {self.input_gray: img_gray[None, :, :, :1]}
             print("feed_dic",feed_dic)
             outputs = self.sess.run(self.sampler, feed_dict=feed_dic)
             print("outputs line")
