@@ -121,6 +121,7 @@ class BaseModel:
 
         for index in range(len(dataset)):
             img_gray_path, img_gray = dataset[index]
+            print(img_gray.shape)
             name = os.path.basename(img_gray_path)
             path = os.path.join(outputs_path, name)
 
