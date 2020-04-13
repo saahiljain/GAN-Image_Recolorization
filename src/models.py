@@ -133,7 +133,7 @@ class BaseModel:
             outputs = postprocess(tf.convert_to_tensor(outputs), colorspace_in=self.options.color_space, colorspace_out=COLORSPACE_RGB).eval() * 255
             print("postprocess")
             print("path in models",path)
-            imshow(outputs[0], self.name)
+            #imshow(outputs[0], self.name)
             imsave(outputs[0], path)
 
     def sample(self, show=True):
