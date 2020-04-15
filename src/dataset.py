@@ -144,8 +144,8 @@ class TestDataset(BaseDataset):
 
     def __getitem__(self, index):
         path = self.data[index]
-        img = imread(path,mode="L")
-        #img = imread(path)
+        #img = imread(path,mode="L")
+        img = imread(path)
         #print(path,img.shape)
         return path, img
 
