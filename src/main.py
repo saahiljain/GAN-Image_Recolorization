@@ -25,8 +25,8 @@ def main(options):
         if options.dataset == CIFAR10_DATASET:
             model = Cifar10Model(sess, options)
 
-        elif options.dataset == PLACES365_DATASET:
-            model = Places365Model(sess, options)
+        # elif options.dataset == PLACES365_DATASET:
+        #     model = Places365Model(sess, options)
 
         if not os.path.exists(options.checkpoints_path):
             os.makedirs(options.checkpoints_path)
@@ -38,11 +38,11 @@ def main(options):
         # build the model and initialize
         model.build()
         sess.run(tf.global_variables_initializer())
-
+        
 
         # load model only after global variables initialization
         model.load()
-
+        model.summary()
 
         if options.mode == 0:
             args = vars(options)

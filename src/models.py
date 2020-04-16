@@ -292,7 +292,7 @@ class Cifar10Model(BaseModel):
 
     def create_generator(self):
         kernels_gen_encoder = [
-            (64, 1, 0),     # [batch, 32, 32, ch] => [batch, 32, 32, 64]
+            (64, 1, 0),     # [batch, 32, 32, ch] => [batch, 32, 32, 64]   stride 1
             (128, 2, 0),    # [batch, 32, 32, 64] => [batch, 16, 16, 128]
             (256, 2, 0),    # [batch, 16, 16, 128] => [batch, 8, 8, 256]
             (512, 2, 0),    # [batch, 8, 8, 256] => [batch, 4, 4, 512]
@@ -325,46 +325,46 @@ class Cifar10Model(BaseModel):
             augment=self.options.augment)
 
 
-class Places365Model(BaseModel):
-    def __init__(self, sess, options):
-        super(Places365Model, self).__init__(sess, options)
+# class Places365Model(BaseModel):
+#     def __init__(self, sess, options):
+#         super(Places365Model, self).__init__(sess, options)
 
-    def create_generator(self):
-        kernels_gen_encoder = [
-            (64, 1, 0),     # [batch, 256, 256, ch] => [batch, 256, 256, 64]
-            (64, 2, 0),     # [batch, 256, 256, 64] => [batch, 128, 128, 64]
-            (128, 2, 0),    # [batch, 128, 128, 64] => [batch, 64, 64, 128]
-            (256, 2, 0),    # [batch, 64, 64, 128] => [batch, 32, 32, 256]
-            (512, 2, 0),    # [batch, 32, 32, 256] => [batch, 16, 16, 512]
-            (512, 2, 0),    # [batch, 16, 16, 512] => [batch, 8, 8, 512]
-            (512, 2, 0),    # [batch, 8, 8, 512] => [batch, 4, 4, 512]
-            (512, 2, 0)     # [batch, 4, 4, 512] => [batch, 2, 2, 512]
-        ]
+#     def create_generator(self):
+#         kernels_gen_encoder = [
+#             (64, 1, 0),     # [batch, 256, 256, ch] => [batch, 256, 256, 64]
+#             (64, 2, 0),     # [batch, 256, 256, 64] => [batch, 128, 128, 64]
+#             (128, 2, 0),    # [batch, 128, 128, 64] => [batch, 64, 64, 128]
+#             (256, 2, 0),    # [batch, 64, 64, 128] => [batch, 32, 32, 256]
+#             (512, 2, 0),    # [batch, 32, 32, 256] => [batch, 16, 16, 512]
+#             (512, 2, 0),    # [batch, 16, 16, 512] => [batch, 8, 8, 512]
+#             (512, 2, 0),    # [batch, 8, 8, 512] => [batch, 4, 4, 512]
+#             (512, 2, 0)     # [batch, 4, 4, 512] => [batch, 2, 2, 512]
+#         ]
 
-        kernels_gen_decoder = [
-            (512, 2, 0),    # [batch, 2, 2, 512] => [batch, 4, 4, 512]
-            (512, 2, 0),    # [batch, 4, 4, 512] => [batch, 8, 8, 512]
-            (512, 2, 0),    # [batch, 8, 8, 512] => [batch, 16, 16, 512]
-            (256, 2, 0),    # [batch, 16, 16, 512] => [batch, 32, 32, 256]
-            (128, 2, 0),    # [batch, 32, 32, 256] => [batch, 64, 64, 128]
-            (64, 2, 0),     # [batch, 64, 64, 128] => [batch, 128, 128, 64]
-            (64, 2, 0)      # [batch, 128, 128, 64] => [batch, 256, 256, 64]
-        ]
+#         kernels_gen_decoder = [
+#             (512, 2, 0),    # [batch, 2, 2, 512] => [batch, 4, 4, 512]
+#             (512, 2, 0),    # [batch, 4, 4, 512] => [batch, 8, 8, 512]
+#             (512, 2, 0),    # [batch, 8, 8, 512] => [batch, 16, 16, 512]
+#             (256, 2, 0),    # [batch, 16, 16, 512] => [batch, 32, 32, 256]
+#             (128, 2, 0),    # [batch, 32, 32, 256] => [batch, 64, 64, 128]
+#             (64, 2, 0),     # [batch, 64, 64, 128] => [batch, 128, 128, 64]
+#             (64, 2, 0)      # [batch, 128, 128, 64] => [batch, 256, 256, 64]
+#         ]
 
-        return Generator('gen', kernels_gen_encoder, kernels_gen_decoder, training=self.options.training)
+#         return Generator('gen', kernels_gen_encoder, kernels_gen_decoder, training=self.options.training)
 
-    def create_discriminator(self):
-        kernels_dis = [
-            (64, 2, 0),     # [batch, 256, 256, ch] => [batch, 128, 128, 64]
-            (128, 2, 0),    # [batch, 128, 128, 64] => [batch, 64, 64, 128]
-            (256, 2, 0),    # [batch, 64, 64, 128] => [batch, 32, 32, 256]
-            (512, 1, 0),    # [batch, 32, 32, 256] => [batch, 32, 32, 512]
-        ]
+#     def create_discriminator(self):
+#         kernels_dis = [
+#             (64, 2, 0),     # [batch, 256, 256, ch] => [batch, 128, 128, 64]
+#             (128, 2, 0),    # [batch, 128, 128, 64] => [batch, 64, 64, 128]
+#             (256, 2, 0),    # [batch, 64, 64, 128] => [batch, 32, 32, 256]
+#             (512, 1, 0),    # [batch, 32, 32, 256] => [batch, 32, 32, 512]
+#         ]
 
-        return Discriminator('dis', kernels_dis, training=self.options.training)
+#         return Discriminator('dis', kernels_dis, training=self.options.training)
 
-    def create_dataset(self, training=True):
-        return Places365Dataset(
-            path=self.options.dataset_path,
-            training=training,
-            augment=self.options.augment)
+#     def create_dataset(self, training=True):
+#         return Places365Dataset(
+#             path=self.options.dataset_path,
+#             training=training,
+#             augment=self.options.augment)
