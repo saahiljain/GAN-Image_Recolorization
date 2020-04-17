@@ -25,9 +25,6 @@ def main(options):
         if options.dataset == CIFAR10_DATASET:
             model = Cifar10Model(sess, options)
 
-        elif options.dataset == PLACES365_DATASET:
-            model = Places365Model(sess, options)
-
         if not os.path.exists(options.checkpoints_path):
             os.makedirs(options.checkpoints_path)
 
