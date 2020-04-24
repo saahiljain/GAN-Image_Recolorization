@@ -19,7 +19,7 @@ class ModelOptions:
         parser.add_argument('--seed', type=int, default=0, metavar='S', help='random seed (default: 0)')
         parser.add_argument('--name', type=str, default='CGAN', help='arbitrary model name (default: CGAN)')
         parser.add_argument('--mode', default=0, help='run mode [0: train, 1: test, 2: turing-test] (default: 0)')
-        parser.add_argument('--dataset', type=str, default='places365', help='the name of dataset [places365, cifar10] (default: places365)')
+        parser.add_argument('--dataset', type=str, default='cifar10', help='the name of dataset [ cifar10] (default: cifar10)')
         parser.add_argument('--dataset-path', type=str, default='./dataset', help='dataset path (default: ./dataset)')
         parser.add_argument('--checkpoints-path', type=str, default='./checkpoints', help='models are saved here (default: ./checkpoints)')
         parser.add_argument('--batch-size', type=int, default=16, metavar='N', help='input batch size for training (default: 16)')
@@ -50,8 +50,7 @@ class ModelOptions:
         
         parser.add_argument('--test-input', type=str, default='', help='path to the grayscale images directory or a grayscale file')
         parser.add_argument('--test-output', type=str, default='', help='model test output directory')
-        parser.add_argument('--turing-test-size', type=int, default=100, metavar='N', help='number of Turing tests (default: 100)')
-        parser.add_argument('--turing-test-delay', type=int, default=0, metavar='N', help='number of seconds to wait when doing Turing test, 0 for unlimited (default: 0)')
+        
 
         self._parser = parser
 

@@ -7,7 +7,6 @@ from abc import abstractmethod
 from .utils import unpickle
 
 CIFAR10_DATASET = 'cifar10'
-PLACES365_DATASET = 'places365'
 
 
 class BaseDataset():

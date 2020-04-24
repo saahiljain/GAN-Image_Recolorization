@@ -3,8 +3,8 @@ import random
 import numpy as np
 import tensorflow as tf
 from .options import ModelOptions
-from .models import Cifar10Model, Places365Model
-from .dataset import CIFAR10_DATASET, PLACES365_DATASET
+from .models import Cifar10Model
+from .dataset import CIFAR10_DATASET
 
 
 def main(options):
